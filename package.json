@@ -1,0 +1,73 @@
+{
+  "name": "e-commerce",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "generate-icons": "svg-to-ts-constants"
+  },
+  "svg-to-ts": {
+    "srcFiles": [
+      "./src/assets/images/icons/**/*.svg"
+    ],
+    "outputDirectory": "./src/assets/images",
+    "interfaceName": "SvgIcon",
+    "typeName": "svgIcon",
+    "prefix": "svg",
+    "svgoConfig": {
+      "plugins": [
+        "cleanupAttrs"
+      ]
+    },
+    "fileName": "svg-icons.constants",
+    "additionalModelFile": "./src/assets/images",
+    "compileSources": true
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.1.0",
+    "@angular/cdk": "^14.2.0",
+    "@angular/common": "^14.1.0",
+    "@angular/compiler": "^14.1.0",
+    "@angular/core": "^14.1.0",
+    "@angular/elements": "^14.2.0",
+    "@angular/forms": "^14.1.0",
+    "@angular/material": "^14.2.0",
+    "@angular/platform-browser": "^14.1.0",
+    "@angular/platform-browser-dynamic": "^14.1.0",
+    "@angular/router": "^14.1.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.4",
+    "apexcharts": "^3.35.5",
+    "date-fns": "^2.29.2",
+    "lodash-es": "^4.17.21",
+    "material-components-web": "^14.0.0",
+    "medium-zoom": "^1.0.6",
+    "ng-apexcharts": "^1.7.1",
+    "rxjs": "~7.5.0",
+    "svg-to-ts": "^8.8.1",
+    "swiper": "^8.3.2",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.1.3",
+    "@angular/cli": "~14.1.3",
+    "@angular/compiler-cli": "^14.1.0",
+    "@types/jasmine": "~4.0.0",
+    "autoprefixer": "^10.4.8",
+    "jasmine-core": "~4.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "postcss": "^8.4.16",
+    "schematics-scss-migrate": "^1.3.15",
+    "tailwindcss": "^3.1.8",
+    "typescript": "~4.7.2"
+  }
+}

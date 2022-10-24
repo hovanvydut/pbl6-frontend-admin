@@ -1,0 +1,15 @@
+// https://github.com/francoischalifour/medium-zoom#installation
+::ng-deep .medium-zoom-image--opened {
+  z-index: 100 !important;
+}
+
+
+::ng-deep .medium-zoom-overlay {
+  z-index: 99 !important;
+}
+
+.zoom-container {
+  width: 90vw;
+  height: 90vh;
+  margin: 5vh auto;
+}

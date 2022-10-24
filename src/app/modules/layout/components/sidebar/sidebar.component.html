@@ -1,0 +1,21 @@
+<div class="sidebar-container bg-transparent pr-20 h-full">
+  <h3 [routerLink]="ENDPOINTS.HOME" class="flex items-center gap-10 border-b pb-10 border-slate-200 cursor-pointer">
+    <app-svg-icon [name]="'parcel'"></app-svg-icon> <b> HOMIE</b>
+  </h3>
+  <!-- list tab -->
+  <ng-container *ngFor="let group of menuItems" class="py-20">
+    <ng-container *ngFor="let item of group.items">
+      <div
+        class="flex items-center px-20 py-10 my-5 cursor-pointer text-gray-500"
+        [routerLink]="item.link"
+        routerLinkActive="bg-white rounded-15 text-black-555 nav-active"
+      >
+        <div class="w-30 h-30 rounded-12 mr-8 flex items-center justify-center nav-icon-wrapper">
+          <app-svg-icon class="nav-icon " [name]="item.icon">
+          </app-svg-icon>
+        </div>
+        <span>{{ item.name }}</span>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

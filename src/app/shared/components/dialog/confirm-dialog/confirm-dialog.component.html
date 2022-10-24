@@ -1,0 +1,20 @@
+<h4 mat-dialog-title>Xác nhận</h4>
+<mat-dialog-content>
+  <p class="text-center"> {{ message }} </p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button
+    mat-raised-button
+    mat-dialog-close
+    tabindex="-1"
+    (click)="onCancelClick()">
+    {{ cancelButtonText }}
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onConfirmClick()"
+    tabindex="1">
+    {{ confirmButtonText }}
+  </button>
+</mat-dialog-actions>

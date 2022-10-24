@@ -1,0 +1,69 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "paths": {
+      "@environment": [
+          "src/environments/environment.ts"
+      ],
+      "@environments/*": [
+          "src/app/environments/*"
+      ],
+      "@app/shared": [
+          "src/app/shared"
+      ],
+      "@app/shared/*": [
+          "src/app/shared/*"
+      ],
+      "@app/utilities": [
+          "src/app/utilities"
+      ],
+      "@app/utilities/*": [
+          "src/app/utilities/*"
+      ],
+      "@app/theme": [
+          "src/app/theme"
+      ],
+      "@app/theme/*": [
+          "src/app/theme/*"
+      ],
+      "@app/modules/*": [
+          "src/app/modules/*"
+      ],
+      "@app/modules/": [
+          "src/app/modules"
+      ],
+      "@app/core": [
+          "src/app/core"
+      ],
+      "@app/core/*": [
+          "src/app/core/*"
+      ]
+  }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": false,
+    "strictTemplates": false
+  }
+}

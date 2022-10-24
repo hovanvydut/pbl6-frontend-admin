@@ -1,0 +1,29 @@
+<mat-form-field class="w-full pr-5 mb-5" [appearance]="appearance" [class]="customClass">
+  <mat-label>{{ label }} </mat-label>
+  <textarea matInput [required]="required" [placeholder]="placeholder" [formControl]="value">
+  </textarea>
+  <app-svg-icon *ngIf="icon" [name]="icon" matPrefix> </app-svg-icon>
+  <mat-error *ngIf="value.invalid && value.touched">
+    <ng-container *ngIf="value.errors.required">
+      {{ label }} không được để trống
+    </ng-container>
+    <ng-container *ngIf="value.errors.min">
+      {{ label }} không được nhỏ hơn {{ value.errors.min.min }}
+    </ng-container>
+    <ng-container *ngIf="value.errors.max">
+      {{ label }} không được lớn hơn {{ value.errors.max.max }}
+    </ng-container>
+    <ng-container *ngIf="value.errors.email">
+      {{ label }} không đúng định dạng
+    </ng-container>
+    <ng-container *ngIf="value.errors.pattern">
+      {{ label }} không đúng định dạng
+    </ng-container>
+    <ng-container *ngIf="value.errors.minlength">
+      {{ label }} phải có ít nhất {{ value.errors.minlength.requiredLength }} ký tự
+    </ng-container>
+    <ng-container *ngIf="value.errors.maxlength">
+      {{ label }} không được vượt quá {{ value.errors.maxlength.requiredLength }} ký tự
+    </ng-container>
+  </mat-error>
+</mat-form-field>

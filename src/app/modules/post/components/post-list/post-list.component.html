@@ -1,0 +1,22 @@
+<div>
+  <p *ngIf="posts?.length === 0">
+    No post found
+  </p>
+  <div class="flex flex-col">
+    <div class="flex justify-start m-auto flex-wrap gap-15 my-20">
+      <ng-container *ngIf="type === 'small'">
+        <app-post-card *ngFor="let post of posts" [post]="post">
+        </app-post-card>
+      </ng-container>
+      <ng-container *ngIf="type === 'large'">
+        <app-post-card-horizontal
+          *ngFor="let post of posts"
+          [post]="post"
+          class="w-full"
+        >
+        </app-post-card-horizontal>
+      </ng-container>
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+</div>

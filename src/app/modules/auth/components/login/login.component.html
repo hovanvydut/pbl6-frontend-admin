@@ -1,0 +1,46 @@
+<div>
+  <p class="text-36 font-weight-bold">Đăng nhập</p>
+  <p class="pt-20">Nếu bạn chưa có tài khoản</p>
+  <p>
+    Hãy đăng kí tại
+    <a class="text-blue-4882C7 font-weight-bold" [routerLink]="'/auth/sign-up'">
+      đây!
+    </a>
+  </p>
+
+  <div class="flex flex-col gap-5">
+    <span *ngIf="errorMessage" class="text-11 text-red-700">
+      {{ errorMessage }}
+    </span>
+    <app-input-field cdkFocusInitial [required]="true" [placeholder]="'Nhập email'" [value]="loginFormControl.email"
+      [label]="'Email'" [type]="'email'">
+      <app-svg-icon slot="iconLabel" [name]="'messages'" class="mr-5" matPrefix>
+      </app-svg-icon>
+      <mat-error slot="error" *ngIf="loginFormControl.email.invalid">
+        {{ getEmailErrorMessage() }}
+      </mat-error>
+    </app-input-field>
+
+    <app-input-field [required]="true" [placeholder]="'Nhập password'" [value]="loginFormControl.password" [label]="'Mật khẩu'"
+      [type]="hidePwd ? 'password' : 'text'">
+      <app-svg-icon slot="iconLabel" [name]="'lock'" class="mr-5" matPrefix> </app-svg-icon>
+      <button slot="icon" mat-icon-button matSuffix (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePwd">
+        <mat-icon>{{ hidePwd ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error slot="error" *ngIf="loginFormControl.password.invalid">
+        {{ getPasswordErrorMessage() }}
+      </mat-error>
+    </app-input-field>
+
+    <!-- more option -->
+    <div class="flex justify-end text-xs text-grey-777 mb-20">
+      <span>Forgot Password ?</span>
+    </div>
+
+    <!-- button -->
+    <button mat-raised-button color="primary" (click)="onSignInButtonClicked()">
+      Đăng nhập
+    </button>
+  </div>
+</div>

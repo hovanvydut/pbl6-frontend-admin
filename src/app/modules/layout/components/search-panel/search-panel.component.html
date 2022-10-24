@@ -1,0 +1,18 @@
+<div class="flex items-center search-panel__container">
+  <mat-form-field class="flex-grow" appearance="outline">
+    <mat-label>Bạn muốn tìm phòng ?</mat-label>
+    <input
+      matInput
+      placeholder="Liên chiểu, Hoà Khánh..."
+      [(ngModel)]="searchKeyword"
+      (ngModelChange)="onSearchKeywordChanged($event)"
+    />
+  </mat-form-field>
+
+
+  <button *ngIf="!searchOnInput" mat-raised-button color="primary" class="search-btn__banner">
+    <app-svg-icon class="mr-10" [name]="'searc'" [color]="'#999'">
+    </app-svg-icon>
+    Search
+  </button>
+</div>

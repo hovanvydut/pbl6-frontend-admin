@@ -1,0 +1,6 @@
+<div class="flex flex-wrap gap-10">
+  <div class="h-25 p-10 flex flex-col" *ngFor="let item of completeIconSet">
+    <app-svg-icon [name]="item.name"></app-svg-icon>
+    <p>{{ item.name }}</p>
+  </div>
+</div>

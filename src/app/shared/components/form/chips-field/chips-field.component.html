@@ -1,0 +1,29 @@
+<mat-form-field class="w-full pr-5" [appearance]="appearance">
+  <mat-label>{{ label }}</mat-label>
+  <mat-chip-list #chipList aria-label="Item selection">
+    <mat-chip *ngFor="let item of selectedItems" (removed)="remove(item)">
+      {{ item.displayName }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      placeholder="New item..."
+      #itemInput
+      [formControl]="itemCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option
+      *ngFor="let item of filteredItems | async"
+      [value]="item"
+      [class.hidden]="selectedItems && selectedItems.includes(item)"
+    >
+      {{ item.displayName }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

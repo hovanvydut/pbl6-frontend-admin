@@ -1,0 +1,14 @@
+::ng-deep .search-panel__container {
+  height: 45px;
+
+  .search-btn__banner {
+    float: right !important;
+    height: 100%;
+    width: 25%;
+  }
+
+  .mat-form-field-wrapper {
+    margin: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}

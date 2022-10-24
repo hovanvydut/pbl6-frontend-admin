@@ -1,0 +1,23 @@
+<swiper
+  [slidesPerView]="slidesPerView"
+  [spaceBetween]="spaceBetween"
+  [navigation]="navigation"
+  [pagination]="pagination ? { clickable: true, dynamicBullets: true } : pagination"
+  [controller]="{ control: controlledSwiper }"
+>
+  <ng-template swiperSlide *ngFor="let item of images">
+      <img *ngIf="!onlyText"
+            [style]="imageStyle"
+            class="swiper-lazy h-full w-full m-auto"
+            [class.object-contain]="imageContain"
+            [class.object-cover]="!imageContain"
+            [src]="item.url || 'assets/images/default/default_avatar.png'"
+            alt="Hình ảnh">
+      <div *ngIf="onlyText"
+            class="h-130 w-149 p-5">
+        <div class="rounded-12 w-full h-full border border-gray-200 flex justify-center items-center">
+          {{ item.name }}
+        </div>
+      </div>
+  </ng-template>
+</swiper>

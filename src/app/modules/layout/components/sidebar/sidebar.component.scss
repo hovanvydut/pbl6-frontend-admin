@@ -1,0 +1,21 @@
+@import "~src/assets/css/expansion.scss";
+
+.sidebar-container {
+  .nav-icon-wrapper {
+    @apply bg-white;
+
+    .nav-icon {
+      @apply text-blue-600;
+    }
+  }
+
+  .nav-active {
+    .nav-icon-wrapper {
+      @apply bg-blue-600 text-white;
+
+      .nav-icon {
+        @apply text-white;
+      }
+    }
+  }
+}

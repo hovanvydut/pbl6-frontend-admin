@@ -1,0 +1,6 @@
+@import "~src/assets/css/expansion.scss";
+::ng-deep .custom-expansion {
+  .mat-expansion-panel[content] {
+    border-bottom: 1px solid #EEEEEE;
+  }
+}

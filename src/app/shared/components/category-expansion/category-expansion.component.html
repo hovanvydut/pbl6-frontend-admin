@@ -1,0 +1,43 @@
+<mat-accordion class="custom-expansion">
+  <mat-expansion-panel hideToggle header>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <button
+          mat-raised-button
+          color="primary"
+          class="w-full flex items-center justify-start text-left py-10px"
+        >
+          <app-svg-icon [name]="'bar'" [color]="'#999'"> </app-svg-icon>
+          <span class="ml-10px"> All Departments </span>
+        </button>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+  <!-- #enddocregion basic-panel -->
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+    content
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <!-- <p>I'm visible because I am open</p> -->
+  </mat-expansion-panel>
+  <mat-expansion-panel content>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description> -->
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,85 @@
+<h2 mat-dialog-title class="text-20">
+  {{ data?.postId ? 'Chỉnh sửa bài đăng' : 'Đăng bài mới'}}
+</h2>
+<mat-dialog-content>
+  <div
+    *ngFor="let group of formControl"
+    class="flex flex-col w-full mt-5">
+    <b class="text-16"> {{ group.groupName }}</b>
+    <div class="flex flex-wrap w-full justify-start">
+      <div *ngFor="let item of group.items" [class]="'w-' + item.width">
+        <app-input-field
+          *ngIf="item.fieldType === FieldType.Input"
+          [required]="item.required"
+          [placeholder]="item.placeholder"
+          [value]="item.value"
+          [label]="item.label"
+          [type]="item.inputType"
+        >
+        </app-input-field>
+        <app-textarea-field
+          *ngIf="item.fieldType === FieldType.Textarea"
+          [required]="item.required"
+          [placeholder]="item.placeholder"
+          [value]="item.value"
+          [label]="item.label"
+        >
+        </app-textarea-field>
+
+        <ng-container *ngIf="item.fieldType === FieldType.Select">
+          <app-select-field
+            [label]="item.label"
+            [(selectedValue)]="item.value.value"
+            [items]="item.properties"
+            [type]="item.name"
+            [disabled]="item.disabled"
+            (onValueChanged)="onSelectedFieldChanged($event)"
+          ></app-select-field>
+        </ng-container>
+
+        <ng-container *ngIf="item.fieldType === FieldType.Property">
+          <app-chips-field
+            [label]="item.label"
+            [selectedItems]="item.value.value"
+            [allItems]="item.properties"
+            [type]="item.name"
+            (onSelectedItemsChanged)="onSelectedFieldChanged($event)"
+          >
+          </app-chips-field>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- upload hình ảnh -->
+  <div>
+    <b class="text-16"> Hình ảnh trọ</b>
+    <div class="mt-15">
+      <div class="flex flex-wrap gap-10 mt-10">
+        <app-upload-image
+          (onImageUploaded)="onFileSelected($event)">
+        </app-upload-image>
+        <div *ngFor="let url of previews">
+          <div class="h-130 w-180 relative">
+            <img class="w-full h-full rounded-15 object-cover"
+              [src]="url" />
+            <div
+              class="w-25 h-25 absolute -top-8 -right-8 rounded-9 shadow-sm flex bg-white justify-center items-center text-blue-700 cursor-pointer"
+              (click)="onFileRemoved(url)">
+              <app-svg-icon [name]="'close'"> </app-svg-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>
+    Hủy
+  </button>
+  <button mat-raised-button color="primary" (click)="onSaveButtonClicked()">
+    Hoàn tất
+  </button>
+</mat-dialog-actions>

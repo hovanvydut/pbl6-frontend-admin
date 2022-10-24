@@ -1,0 +1,96 @@
+<div class="table-container">
+  <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="medias">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Hình ảnh
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="w-100">
+            <app-swiper-template
+              [images]="element.medias"
+              [navigation]="false"
+              [imageStyle]="'border-radius: 15px'">
+            </app-swiper-template>
+            <img *ngIf="element.medias.length === 0" src="assets/images/default/house_default.png" alt="Hình ảnh"
+              class="h-56 rounded-5 m-auto">
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Tiêu đề
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-210">
+            {{ element.title }}
+          </p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="area">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Diện tích
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.area }} m<sup>2</sup>
+          </p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Giá
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.price | currency: "VND" }}
+          </p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Phân loại phòng
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.category.name }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address" class="w-210">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Địa chỉ
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.address + ',' +  ( element.fullAddress | address ) }}
+          </p>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action" class="w-100">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Thao tác
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex gap-5">
+            <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditPostButtonClicked(element.id)"></app-svg-icon>
+            <app-svg-icon class="cursor-pointer" [name]="'delete'" (click)="onDeletePostButtonClicked(element.id)"></app-svg-icon>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
+<ng-template #tableHeader let-name="name">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    {{ name }}
+  </th>
+</ng-template>
