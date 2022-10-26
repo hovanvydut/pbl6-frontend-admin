@@ -1,0 +1,115 @@
+<div class="table-container">
+  <div>
+    <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+    <mat-form-field style="margin-left: 35vw;">
+      <span matPrefix> </span>
+      <input type="text" matInput placeholder="Tìm kiếm..." name="searchValue" (change)="getUsers()"
+        [(ngModel)]="queryParams.searchValue">
+      <button matSuffix mat-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="avatar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Ảnh đại diện
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="w-100">
+            <img *ngIf="element.avatar!==''" src="{{element.avatar}}" alt="Ảnh đại diện" class="h-56 rounded-5 m-auto"
+              style="border-radius: 15px">
+
+            <img *ngIf="element.avatar===''" src="assets/images/default/default_avatar.png" alt="Ảnh đại diện"
+              class="h-56 rounded-5 m-auto">
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Tên
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-210">
+            {{ element.displayName }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Email
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-50">
+            {{ element.email }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          SĐT
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.phoneNumber }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="identityNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          CMND
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.identityNumber }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address" class="w-210">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Địa chỉ
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.address + ', '
+            + element.addressWard + ', '
+            + element.addressDistrict + ', '
+            + element.addressProvince }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" class="w-100">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Thao tác
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex gap-5">
+            <app-svg-icon class="cursor-pointer" [name]="'lock'">
+            </app-svg-icon>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <mat-paginator style-paginator (page)="pageChangeEvent($event)" [length]="totalPosts"
+    [pageSize]="queryParams.pageSize" [pageSizeOptions]="[10,20,50]" showFirstLastButtons>
+  </mat-paginator>
+
+</div>
+
+<ng-template #tableHeader let-name="name">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    {{ name }}
+  </th>
+</ng-template>

@@ -1,14 +1,24 @@
 <div class="table-container">
-  <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+  <div>
+    <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+    <mat-form-field style="margin-left: 35vw;">
+      <span matPrefix> </span>
+      <input type="text" matInput placeholder="Tìm kiếm..." name="searchValue" (change)="getRoles()"
+        [(ngModel)]="queryParams.searchValue">
+      <button matSuffix mat-button>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
   <div class="table-wrapper">
     <table mat-table [dataSource]="dataSource" matSort>
-
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Tền vai trò
         </th>
         <td mat-cell *matCellDef="let element">
-          <p class="mx-5 w-210">
+          <p class="mx-5 w-150">
             {{ element.name }}
           </p>
         </td>
@@ -19,7 +29,7 @@
           Mô tả
         </th>
         <td mat-cell *matCellDef="let element">
-          <p class="mx-5 w-100">
+          <p class="mx-5 w-200">
             {{ element.description }}
           </p>
         </td>
@@ -31,8 +41,10 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <div class="flex gap-5">
-            <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditRoleButtonClicked(element.id)"></app-svg-icon>
-            <!-- <app-svg-icon class="cursor-pointer" [name]="'delete'" (click)="onDeleteRoleButtonClicked(element.id)"></app-svg-icon> -->
+            <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditRoleButtonClicked(element.id)">
+            </app-svg-icon>
+            <app-svg-icon class="cursor-pointer" [name]="'eye_open'" (click)="onDeleteRoleButtonClicked(element.id)">
+            </app-svg-icon>
           </div>
         </td>
       </ng-container>
@@ -41,8 +53,8 @@
     </table>
   </div>
 
-  <mat-paginator style-paginator (page)="pageChangeEvent($event)" [length]="totalPosts" [pageSize]="queryParams.pageSize"
-    [pageSizeOptions]="[10,20,50]" showFirstLastButtons>
+  <mat-paginator style-paginator (page)="pageChangeEvent($event)" [length]="totalPosts"
+    [pageSize]="queryParams.pageSize" [pageSizeOptions]="[10,20,50]" showFirstLastButtons>
   </mat-paginator>
 
 </div>

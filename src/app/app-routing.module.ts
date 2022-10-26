@@ -23,6 +23,12 @@ const routes: Routes = [
     path: 'styles/icons',
     component: ViewIconsComponent
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'admin',
+  //   canActivate: [AuthGuard],
+  //   pathMatch: 'full',
+  // },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -35,4 +41,4 @@ const config: ExtraOptions = {
   imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

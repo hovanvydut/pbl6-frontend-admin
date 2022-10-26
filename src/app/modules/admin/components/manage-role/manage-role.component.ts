@@ -23,7 +23,7 @@ export class ManageRoleComponent implements OnInit {
 
   onAddNewRoleButtonClicked(){
     let dialogRef = this.dialog.open(this.roleDetailFormComponent, {
-      width: '70vw',
+      width: '35vw',
       maxHeight: '90vh'
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -34,7 +34,7 @@ export class ManageRoleComponent implements OnInit {
   handleEditRole(roleId: any) {
     if (roleId) {
       let dialogRef = this.dialog.open(this.roleDetailFormComponent, {
-        width: '70vw',
+        width: '35vw',
         maxHeight: '90vh',
         data: { roleId: roleId }
       });

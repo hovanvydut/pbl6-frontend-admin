@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BaseModel, DatasourceBaseModel } from '@app/shared/models/base.model';
-import { of, Observable } from 'rxjs';
+import { DatasourceBaseModel } from '@app/shared/models/base.model';
+import { Observable } from 'rxjs';
 //
 import { BaseService } from 'src/app/core/services/base.service';
 import { RoleBaseModel, QueryParams, RoleRequestModel } from '../models/role.model';
