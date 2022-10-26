@@ -10,7 +10,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { ManageRevenusComponent } from './components/manage-revenus/manage-revenus.component';
 import { ManageUserComponent } from './components/manage-user/manage-user.component';
+import { ManageRoleComponent } from './components/manage-role/manage-role.component';
+import { ManagePermissionComponent } from './components/manage-permission/manage-permission.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { RoleModule } from '../role/role.module';
+
 export const routes: Routes = [
   {
     path: '',
@@ -37,6 +41,16 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'manage-role',
+        component: ManageRoleComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'manage-role/:id/manage-permission',
+        component: ManagePermissionComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'manage-revenus',
         component: ManageRevenusComponent,
         canActivate: [AuthGuard]
@@ -55,13 +69,16 @@ const COMPONENTS = [
   DashboardComponent,
   SettingsComponent,
   ManageRevenusComponent,
-  ManageUserComponent
+  ManageUserComponent,
+  ManageRoleComponent,
+  ManagePermissionComponent,
 ];
 
 const MODULES = [
   RouterModule.forChild(routes),
   SharedModule,
   PostModule,
+  RoleModule,
   ProfileModule
 ];
 

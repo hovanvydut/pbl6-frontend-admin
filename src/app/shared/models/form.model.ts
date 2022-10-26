@@ -23,6 +23,6 @@ export class FormBaseModel {
 }
 
 export class FormControlBaseModel {
-  groupName: PostGroupName;
+  groupName: string;
   items: FormBaseModel[];
 }

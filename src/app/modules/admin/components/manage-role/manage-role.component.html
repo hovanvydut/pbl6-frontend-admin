@@ -1,0 +1,12 @@
+<div class="flex justify-between items-center mb-10">
+  <b class="text-20">
+    Quản lý phân quyền
+  </b>
+
+  <div class="w-30 h-30 rounded-5 flex justify-center items-center bg-blue-700 text-white p-5 cursor-pointer"
+    (click)="onAddNewRoleButtonClicked()">
+    <app-svg-icon [name]="'plus'"> </app-svg-icon>
+  </div>
+</div>
+
+<app-role-table #roleTable [forceUpdate]="forceUpdate"></app-role-table>

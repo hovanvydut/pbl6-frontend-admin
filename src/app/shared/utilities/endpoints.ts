@@ -11,6 +11,7 @@ export const ENDPOINTS = {
   MANAGE_REVENUS: '/admin/manage-revenus',
   STATISTICS: '/admin/statistics',
   MANAGE_USER: '/admin/manage-user',
+  MANAGE_ROLE: '/admin/manage-role',
   SETTINGS: '/admin/settings',
 
   HOME: '/admin/dashboard',
