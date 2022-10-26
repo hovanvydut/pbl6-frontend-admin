@@ -24,6 +24,11 @@ export class SidebarComponent implements OnInit {
         },
         {
           icon: 'chart_vertical',
+          name: 'Quản lý phân quyền',
+          link: ENDPOINTS.MANAGE_ROLE
+        },
+        {
+          icon: 'chart_vertical',
           name: 'Thống kê',
           link: ENDPOINTS.STATISTICS
         },

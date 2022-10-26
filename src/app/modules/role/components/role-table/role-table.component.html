@@ -1,0 +1,54 @@
+<div class="table-container">
+  <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Tền vai trò
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-210">
+            {{ element.name }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Mô tả
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <p class="mx-5 w-100">
+            {{ element.description }}
+          </p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" class="w-100">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Thao tác
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex gap-5">
+            <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditRoleButtonClicked(element.id)"></app-svg-icon>
+            <!-- <app-svg-icon class="cursor-pointer" [name]="'delete'" (click)="onDeleteRoleButtonClicked(element.id)"></app-svg-icon> -->
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <mat-paginator style-paginator (page)="pageChangeEvent($event)" [length]="totalPosts" [pageSize]="queryParams.pageSize"
+    [pageSizeOptions]="[10,20,50]" showFirstLastButtons>
+  </mat-paginator>
+
+</div>
+
+<ng-template #tableHeader let-name="name">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+    {{ name }}
+  </th>
+</ng-template>

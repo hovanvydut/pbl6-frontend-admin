@@ -61,3 +61,11 @@ export enum InputType {
   Url = 'url',
   Tel = 'tel',
 }
+
+export enum FieldType {
+  Property = 'property',
+  Textarea = 'textarea',
+  Input = 'input',
+  Select = 'select',
+  Image = 'image',
+}

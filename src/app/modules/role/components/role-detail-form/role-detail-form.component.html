@@ -1,0 +1,40 @@
+<h2 mat-dialog-title class="text-20">
+  {{ data?.roleId ? 'Chỉnh sửa vai trò' : 'Tạo vai trò mới'}}
+</h2>
+<mat-dialog-content>
+  <div
+    *ngFor="let group of formControl"
+    class="flex flex-col w-full mt-5">
+    <b class="text-16"> {{ group.groupName }}</b>
+    <div class="flex flex-wrap w-full justify-start">
+      <div *ngFor="let item of group.items" [class]="'w-' + item.width">
+        <app-input-field
+          *ngIf="item.fieldType === FieldType.Input"
+          [required]="item.required"  
+          [placeholder]="item.placeholder"
+          [value]="item.value"
+          [label]="item.label"
+          [type]="item.inputType"
+        >
+        </app-input-field>
+        <app-textarea-field
+          *ngIf="item.fieldType === FieldType.Textarea"
+          [required]="item.required"
+          [placeholder]="item.placeholder"
+          [value]="item.value"
+          [label]="item.label"
+        >
+        </app-textarea-field>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>
+    Hủy
+  </button>
+  <button mat-raised-button color="primary" (click)="onSaveButtonClicked()">
+    Hoàn tất
+  </button>
+</mat-dialog-actions>
