@@ -14,6 +14,7 @@ import { ManageRoleComponent } from './components/manage-role/manage-role.compon
 import { ManagePermissionComponent } from './components/manage-permission/manage-permission.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RoleModule } from '../role/role.module';
+import { UserModule } from '../user/user.module';
 
 export const routes: Routes = [
   {
@@ -79,7 +80,8 @@ const MODULES = [
   SharedModule,
   PostModule,
   RoleModule,
-  ProfileModule
+  ProfileModule,
+  UserModule,
 ];
 
 @NgModule({

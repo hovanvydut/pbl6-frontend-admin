@@ -34,7 +34,8 @@ export class RoleTableComponent implements OnInit, AfterViewInit {
   totalPosts: number = 0;
   queryParams: QueryParams = new QueryParams({
     pageNumber: 1,
-    pageSize: 10
+    pageSize: 10,
+    searchValue: '',
   })
 
   dataSource: MatTableDataSource<RoleBaseModel> = new MatTableDataSource();
@@ -72,7 +73,7 @@ export class RoleTableComponent implements OnInit, AfterViewInit {
   onEditRoleButtonClicked(roleId: string) {
     if (roleId) {
       let dialogRef = this.dialog.open(this.roleDetailFormComponent, {
-        width: '70vw',
+        width: '35vw',
         maxHeight: '90vh',
         data: { roleId: roleId }
       });
