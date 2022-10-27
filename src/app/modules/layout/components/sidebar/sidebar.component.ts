@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
           link: ENDPOINTS.MANAGE_USER
         },
         {
-          icon: 'chart_vertical',
+          icon: 'area',
           name: 'Quản lý phân quyền',
           link: ENDPOINTS.MANAGE_ROLE
         },

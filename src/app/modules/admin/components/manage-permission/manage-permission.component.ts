@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  PermissionTableComponent,
+} from '@app/modules/role/components';
 
 @Component({
   selector: 'app-manage-permission',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-permission.component.scss']
 })
 export class ManagePermissionComponent implements OnInit {
+  @ViewChild('permissionTable') permissionTableComponent: PermissionTableComponent;
+  forceUpdate: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onAddNewPermissionButtonClicked() {
+
+  }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 //
-import { RoleDetailFormComponent } from '@app/modules/role/components/role-detail-form/role-detail-form.component';
-import { RoleTableComponent } from '@app/modules/role/components/role-table/role-table.component';
+import {
+  RoleDetailFormComponent,
+  RoleTableComponent,
+} from '@app/modules/role/components';
 
 @Component({
   selector: 'app-manage-role',
@@ -21,7 +23,7 @@ export class ManageRoleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddNewRoleButtonClicked(){
+  onAddNewRoleButtonClicked() {
     let dialogRef = this.dialog.open(this.roleDetailFormComponent, {
       width: '35vw',
       maxHeight: '90vh'

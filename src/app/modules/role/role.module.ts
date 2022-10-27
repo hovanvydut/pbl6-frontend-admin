@@ -8,8 +8,11 @@ import { LayoutModule } from '@app/modules/layout/layout.module';
 
 import { ProfileModule } from '../profile/profile.module';
 import { SwiperModule } from 'swiper/angular';
-import { RoleTableComponent } from './components/role-table/role-table.component';
-import { RoleDetailFormComponent } from './components/role-detail-form/role-detail-form.component';
+import {
+  RoleTableComponent,
+  RoleDetailFormComponent,
+  PermissionTableComponent,
+} from './components';
 //
 
 export const routes: Routes = [];
@@ -33,11 +36,13 @@ const MODULES = [
     ...COMPONENTS,
     RoleTableComponent,
     RoleDetailFormComponent,
+    PermissionTableComponent,
   ],
   exports: [
     ...COMPONENTS,
     RoleTableComponent,
     RoleDetailFormComponent,
+    PermissionTableComponent,
   ]
 })
-export class RoleModule {}
+export class RoleModule { }

@@ -4,9 +4,9 @@ import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 //
 import { InputType, FieldType } from '@app/shared/app.enum';
-import { RoleRequestModel } from '../../models/role.model';
+import { RoleRequestModel } from '../../models';
 import { FormControlBaseModel } from '@app/shared/models/form.model';
-import { RoleService } from '@app/modules/role/services/role.service';
+import { RoleService } from '@app/modules/role/services';
 import { NotifyService } from '@app/shared/services/notify.service';
 
 @Component({
