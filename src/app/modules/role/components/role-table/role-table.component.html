@@ -1,7 +1,7 @@
 <div class="table-container">
   <div>
     <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
-    <mat-form-field style="margin-left: 35vw;">
+    <mat-form-field style="margin-left: 38vw;">
       <span matPrefix> </span>
       <input type="text" matInput placeholder="Tìm kiếm..." name="searchValue" (change)="getRoles()"
         [(ngModel)]="queryParams.searchValue">
@@ -43,7 +43,7 @@
           <div class="flex gap-5">
             <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditRoleButtonClicked(element.id)">
             </app-svg-icon>
-            <app-svg-icon class="cursor-pointer" [name]="'eye_open'" (click)="onDeleteRoleButtonClicked(element.id)">
+            <app-svg-icon class="cursor-pointer" [name]="'eye_open'" (click)="onManagePermissionButtonClicked(element.id)">
             </app-svg-icon>
           </div>
         </td>

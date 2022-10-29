@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { RoleService } from './../../services/role.service';
 import { RoleBaseModel, QueryParams } from '../../models/role.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { ENDPOINTS } from '@app/shared/utilities';
 
 import { RoleDetailFormComponent } from '@app/modules/role/components/role-detail-form/role-detail-form.component';
 
@@ -42,9 +44,9 @@ export class RoleTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dialog: MatDialog,
+    private router: Router,
     private roleService: RoleService,
-  )
-  {}
+  ) { }
 
   ngOnInit(): void {
     this.getRoles();
@@ -67,7 +69,8 @@ export class RoleTableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onDeleteRoleButtonClicked(roleId: string) {
+  onManagePermissionButtonClicked(roleId: string) {
+    this.router.navigate([`${ENDPOINTS.MANAGE_ROLE}/${roleId}/manage-permission`]);
   }
 
   onEditRoleButtonClicked(roleId: string) {
