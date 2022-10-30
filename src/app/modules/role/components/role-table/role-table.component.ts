@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { ENDPOINTS } from '@app/shared/utilities';
 
-import { RoleDetailFormComponent } from '@app/modules/role/components/role-detail-form/role-detail-form.component';
+import { RoleDetailFormComponent } from '@app/modules/role/components';
 
 @Component({
   selector: 'app-role-table',

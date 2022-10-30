@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@app/shared/shared.module';
 import { PostModule } from '../post/post.module';
 import { ProfileModule } from '../profile/profile.module';
-import { UserTableComponent } from './components';
+import { SettingTableComponent, SettingDetailFormComponent } from './components';
 
 export const routes: Routes = [];
 
@@ -26,14 +26,16 @@ const MODULES = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    UserTableComponent,
+    SettingTableComponent,
+    SettingDetailFormComponent,
   ],
   imports: [...MODULES],
   exports: [
     ...COMPONENTS,
-    UserTableComponent,
+    SettingTableComponent,
+    SettingDetailFormComponent,
   ],
 })
-export class UserModule {
-  constructor() {}
+export class SettingModule {
+  constructor() { }
 }

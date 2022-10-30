@@ -1,10 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit, ViewChild } from '@angular/core';
-import { UserService } from './../../services/user.service';
-import { UserBaseModel, QueryParams } from '../../models/user.model';
+import { Component, OnInit, Input, AfterViewInit, ViewChild } from '@angular/core';
+import { UserService } from './../../services';
+import { UserBaseModel, QueryParams } from '../../models';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { RoleDetailFormComponent } from '@app/modules/role/components/role-detail-form/role-detail-form.component';
+import { RoleDetailFormComponent } from '@app/modules/role/components';
 
 @Component({
   selector: 'app-user-table',
