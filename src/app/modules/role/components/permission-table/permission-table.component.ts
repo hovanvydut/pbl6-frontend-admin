@@ -1,7 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { FlatTreeControl } from '@angular/cdk/tree';
 import { PermissionBaseModel, PermissionGroupModel, PermissionRequestModel } from '../../models';
 import { MatTableDataSource } from '@angular/material/table';
 import { PermissionService } from './../../services';

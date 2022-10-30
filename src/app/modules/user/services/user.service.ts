@@ -3,7 +3,7 @@ import { DatasourceBaseModel } from '@app/shared/models/base.model';
 import { Observable } from 'rxjs';
 //
 import { BaseService } from 'src/app/core/services/base.service';
-import { UserBaseModel, QueryParams, UserRequestModel } from '../models/user.model';
+import { UserBaseModel, QueryParams } from '../models';
 
 @Injectable({
   providedIn: 'root'

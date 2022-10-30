@@ -15,6 +15,7 @@ import { ManagePermissionComponent } from './components/manage-permission/manage
 import { SettingsComponent } from './components/settings/settings.component';
 import { RoleModule } from '../role/role.module';
 import { UserModule } from '../user/user.module';
+import { SettingModule } from '../setting/setting.module';
 
 export const routes: Routes = [
   {
@@ -82,6 +83,7 @@ const MODULES = [
   RoleModule,
   ProfileModule,
   UserModule,
+  SettingModule,
 ];
 
 @NgModule({
