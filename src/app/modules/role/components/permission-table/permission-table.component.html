@@ -1,6 +1,15 @@
 <div class="table-container">
     <div>
         <b class="font-medium text-18 mb-10"> {{ tableName }} </b>
+
+        <mat-form-field appearance="empty" style="margin-left: 38vw;">
+            <mat-label>Chọn module</mat-label>
+            <mat-select [(value)]="selectedModule" (selectionChange)="filterPermissions($event)">
+                <mat-option *ngFor="let module of dataModule" [value]="module.value">
+                    {{module.key}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
     <div class="table-wrapper">

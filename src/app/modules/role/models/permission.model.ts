@@ -19,7 +19,7 @@ export class PermissionRequestModel {
 }
 
 export class PermissionGroupModel {
-    name: string;
+    key: string;
     children: PermissionBaseModel[];
 
     public constructor(init?: Partial<PermissionGroupModel>) {
