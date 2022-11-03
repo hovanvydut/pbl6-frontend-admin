@@ -26,6 +26,11 @@ export class PermissionTableComponent implements OnInit, AfterViewInit {
   ];
   tableName: string = 'Tất cả quyền truy cập của vai trò';
   dataSource: MatTableDataSource<PermissionBaseModel> = new MatTableDataSource();
+
+  dataGroup = {};
+  dataModule = [];
+  selectedModule: string = '';
+
   roleId: number;
 
   constructor(
@@ -46,14 +51,26 @@ export class PermissionTableComponent implements OnInit, AfterViewInit {
 
   getPermissions() {
     this.permissionService.getPermissions(this.roleId).subscribe(data => {
-      const dataObj: PermissionBaseModel[] = [];
-      data.forEach(d => {
-        d.children.forEach(c => {
-          dataObj.push(c);
-        })
+      const dataModule = [];
+      const dataGroup = {};
+      data.forEach((d: PermissionGroupModel) => {
+        dataModule.push({
+          key: d.key,
+          value: d.key,
+        });
+        dataGroup[d.key] = d.children;
       });
-      this.dataSource = new MatTableDataSource<PermissionBaseModel>(dataObj);
+      this.dataModule = dataModule;
+      this.dataGroup = dataGroup;
+      if (!this.selectedModule) {
+        this.selectedModule = this.dataModule[0].key;
+      }
+      this.dataSource = new MatTableDataSource<PermissionBaseModel>(this.dataGroup[this.selectedModule]);
     });
+  }
+
+  filterPermissions(event){
+    this.dataSource = new MatTableDataSource<PermissionBaseModel>(this.dataGroup[this.selectedModule]);
   }
 
   onAddPermisison(element) {

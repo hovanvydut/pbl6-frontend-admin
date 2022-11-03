@@ -2,11 +2,6 @@
     <b class="text-20">
         Quản lý quyền truy cập
     </b>
-
-    <div class="w-30 h-30 rounded-5 flex justify-center items-center bg-blue-700 text-white p-5 cursor-pointer"
-        (click)="onAddNewPermissionButtonClicked()">
-        <app-svg-icon [name]="'plus'"> </app-svg-icon>
-    </div>
 </div>
 
 <app-permission-table #permissionTable [forceUpdate]="forceUpdate"></app-permission-table>

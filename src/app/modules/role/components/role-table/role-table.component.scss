@@ -11,6 +11,7 @@
   .table-wrapper {
     height: 100%;
     overflow: scroll;
+
     &::-webkit-scrollbar-thumb {
       background-color: transparent !important;
     }
@@ -46,7 +47,7 @@ table {
   tr.mat-header-row {
     height: 50px !important;
     width: 100%;
-}
+  }
 }
 
 ::ng-deep .mat-paginator {
