@@ -3,8 +3,9 @@ import { UserService } from './../../services';
 import { UserBaseModel, QueryParams } from '../../models';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
-import { RoleDetailFormComponent } from '@app/modules/role/components';
+import { UserDetailFormComponent } from '@app/modules/user/components';
 
 @Component({
   selector: 'app-user-table',
@@ -21,7 +22,7 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     this._forceUpdate = false;
   }
 
-  roleDetailFormComponent = RoleDetailFormComponent;
+  userDetailFormComponent = UserDetailFormComponent;
 
   tableName: string = 'Tất cả người dùng trong hệ thống';
   displayedColumns: string[] = [
@@ -43,6 +44,7 @@ export class UserTableComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<UserBaseModel> = new MatTableDataSource();
 
   constructor(
+    private dialog: MatDialog,
     private userService: UserService,
   )
   {}
@@ -66,5 +68,18 @@ export class UserTableComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource<UserBaseModel>(data.records);
       this.totalPosts = data.totalRecords;
     });
+  }
+
+  onEditUserButtonClicked(userId: string) {
+    if (userId) {
+      let dialogRef = this.dialog.open(this.userDetailFormComponent, {
+        width: '35vw',
+        maxHeight: '90vh',
+        data: { userId: userId }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.getUsers();
+      });
+    }
   }
 }

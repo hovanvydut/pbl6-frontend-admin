@@ -1,0 +1,39 @@
+<h2 mat-dialog-title class="text-20">
+  {{ data?.userId ? 'Chỉnh sửa tài khoản người dùng' : 'Tạo tài khoản mới'}}
+</h2>
+<mat-dialog-content>
+  <div *ngFor="let group of formControl" class="flex flex-col w-full mt-5">
+    <b class="text-16"> {{ group.groupName }}</b>
+    <div class="flex flex-wrap w-full justify-start">
+      <div *ngFor="let item of group.items" [class]="'w-' + item.width">
+        <app-input-field *ngIf="item.fieldType === FieldType.Input" [required]="item.required"
+          [placeholder]="item.placeholder" [value]="item.value" [label]="item.label" [type]="item.inputType">
+        </app-input-field>
+        <app-textarea-field *ngIf="item.fieldType === FieldType.Textarea" [required]="item.required"
+          [placeholder]="item.placeholder" [value]="item.value" [label]="item.label">
+        </app-textarea-field>
+
+        <ng-container *ngIf="item.fieldType === FieldType.Select">
+          <app-select-field [label]="item.label" [(selectedValue)]="item.value.value" [items]="item.properties"
+            [type]="item.name" [disabled]="item.disabled" (onValueChanged)="onFieldChanged($event)">
+          </app-select-field>
+        </ng-container>
+
+        <ng-container *ngIf="item.fieldType === FieldType.Toggle">
+          <app-toggle-field [label]="item.label" [(selectedValue)]="item.value.value"
+            [type]="item.name" [disabled]="item.disabled" (onValueChanged)="onFieldChanged($event)">
+          </app-toggle-field>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>
+    Hủy
+  </button>
+  <button mat-raised-button color="primary" (click)="onSaveButtonClicked()">
+    Hoàn tất
+  </button>
+</mat-dialog-actions>

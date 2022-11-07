@@ -92,7 +92,7 @@
         </th>
         <td mat-cell *matCellDef="let element">
           <div class="flex gap-5">
-            <app-svg-icon class="cursor-pointer" [name]="'lock'">
+            <app-svg-icon class="cursor-pointer" [name]="'edit_nowrap'" (click)="onEditUserButtonClicked(element.accountId)">
             </app-svg-icon>
           </div>
         </td>

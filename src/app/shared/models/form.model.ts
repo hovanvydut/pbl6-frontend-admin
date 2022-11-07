@@ -1,11 +1,12 @@
 import { FormControl } from "@angular/forms";
 import { FieldType, PostGroupName } from "@app/modules/post/enums/post.enum";
 import { PostFieldEnum, PropertyEnum } from "@app/modules/post/enums/property.enum";
+import { UserAccessEnum, UserAuthEnum } from "@app/modules/user/enums";
 import { InputType } from "../app.enum";
 import { ItemModel } from './base.model';
 
 export class FormBaseModel {
-  id?: PropertyEnum | PostFieldEnum;
+  id?: PropertyEnum | PostFieldEnum | UserAccessEnum | UserAuthEnum;
   name: string;
   label: string;
   placeholder: string;

@@ -70,6 +70,7 @@ import { TextareaFieldComponent } from './components/form/textarea-field/textare
 import { InputFieldComponent } from './components/form/input-field/input-field.component';
 import { SelectFieldComponent } from './components/form/select-field/select-field.component';
 import { ChipsFieldComponent } from './components/form/chips-field/chips-field.component';
+import { ToggleFieldComponent } from './components/form/toggle-field/toggle-field.component';
 import { AddressPipe } from './pipes/address.pipe';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 
@@ -89,7 +90,8 @@ const COMPONENTS: any[] = [
   InputFieldComponent,
   TextareaFieldComponent,
   SelectFieldComponent,
-  ChipsFieldComponent
+  ChipsFieldComponent,
+  ToggleFieldComponent,
 ];
 
 const MATERIALS: any[] = [

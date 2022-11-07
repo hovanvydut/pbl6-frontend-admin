@@ -3,7 +3,12 @@ import { DatasourceBaseModel } from '@app/shared/models/base.model';
 import { Observable } from 'rxjs';
 //
 import { BaseService } from 'src/app/core/services/base.service';
-import { UserBaseModel, QueryParams } from '../models';
+import {
+  UserBaseModel,
+  QueryParams,
+  UserRequestModel,
+  UserAccountModel,
+} from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +25,13 @@ export class UserService {
         })
         .join('&');
     return this.baseService.get(`user${queryString}`);
+  }
+
+  getUserById(userId: string): Observable<UserAccountModel> {
+    return this.baseService.get(`user/account/${userId}`);
+  }
+
+  updateUser(user: UserRequestModel): Observable<void> {
+    return this.baseService.put(`user/account/${user.id}`, user);
   }
 }
