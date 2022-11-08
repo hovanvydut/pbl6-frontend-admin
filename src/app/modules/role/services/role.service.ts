@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DatasourceBaseModel } from '@app/shared/models/base.model';
+import { DatasourceBaseModel, ItemModel } from '@app/shared/models/base.model';
 import { Observable } from 'rxjs';
 //
 import { BaseService } from 'src/app/core/services/base.service';
@@ -9,9 +9,9 @@ import { RoleBaseModel, QueryParams, RoleRequestModel } from '../models/role.mod
   providedIn: 'root'
 })
 export class RoleService {
-  constructor(private baseService: BaseService) {}
+  constructor(private baseService: BaseService) { }
 
-  getRoles(params: QueryParams): Observable<DatasourceBaseModel<RoleBaseModel>>{
+  getRoles(params: QueryParams): Observable<DatasourceBaseModel<RoleBaseModel>> {
     const queryString =
       '?' +
       Object.keys(params)
@@ -20,6 +20,10 @@ export class RoleService {
         })
         .join('&');
     return this.baseService.get(`role${queryString}`);
+  }
+
+  getAllRoles(): Observable<ItemModel[]> {
+    return this.baseService.get('role/all');
   }
 
   getRoleById(id: string): Observable<RoleRequestModel> {

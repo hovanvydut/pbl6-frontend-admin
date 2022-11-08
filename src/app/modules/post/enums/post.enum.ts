@@ -11,4 +11,5 @@ export enum FieldType {
   Input = 'input',
   Select = 'select',
   Image = 'image',
+  Toggle = 'toggle',
 }

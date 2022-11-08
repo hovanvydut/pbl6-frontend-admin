@@ -6,7 +6,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@app/shared/shared.module';
 import { PostModule } from '../post/post.module';
 import { ProfileModule } from '../profile/profile.module';
-import { UserTableComponent } from './components';
+import {
+  UserTableComponent,
+  UserDetailFormComponent,
+} from './components';
 
 export const routes: Routes = [];
 
@@ -27,13 +30,15 @@ const MODULES = [
   declarations: [
     ...COMPONENTS,
     UserTableComponent,
+    UserDetailFormComponent,
   ],
   imports: [...MODULES],
   exports: [
     ...COMPONENTS,
     UserTableComponent,
+    UserDetailFormComponent,
   ],
 })
 export class UserModule {
-  constructor() {}
+  constructor() { }
 }

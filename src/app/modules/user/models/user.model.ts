@@ -17,10 +17,24 @@ export class UserBaseModel {
   }
 }
 
-export class UserRequestModel extends UserBaseModel {
+export class UserAccountModel {
+  email: string = '';
+  isVerified: boolean = true;
+  isActived: boolean = true;
+  roleId: number = 0;
+  roleName: string = '';
+
+  public constructor(init?: Partial<UserAccountModel>) {
+    Object.assign(this, init);
+  }
+}
+
+export class UserRequestModel {
+  id: number = 0;
+  roleId: number = 0;
+  isActived: boolean = false;
 
   public constructor(init?: Partial<UserRequestModel>) {
-    super();
     Object.assign(this, init);
   }
 }
