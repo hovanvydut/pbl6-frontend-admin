@@ -7,6 +7,11 @@ import { ViewIconsComponent } from './shared/components/view-icons/view-icons.co
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/admin/dashboard',
+    pathMatch: 'full'
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('@app/modules/auth/auth.module').then(m => m.AuthModule)
@@ -23,12 +28,6 @@ const routes: Routes = [
     path: 'styles/icons',
     component: ViewIconsComponent
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'admin',
-  //   canActivate: [AuthGuard],
-  //   pathMatch: 'full',
-  // },
   { path: '**', component: PageNotFoundComponent }
 ];
 
