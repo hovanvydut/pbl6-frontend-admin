@@ -1,0 +1,137 @@
+<mat-card class="payment-container">
+  <div class="flex justify-between items-center mb-10 sticky top-0">
+    <b class="text-20">
+      Giao dịch thanh toán
+    </b>
+    <div class="flex gap-10 items-end">
+      <mat-form-field appearance="outline">
+        <input
+          type="text"
+          matInput
+          placeholder="Tìm kiếm..."
+          name="searchValue"
+          (change)="getTransactionHistory()"
+          [(ngModel)]="queryParams.searchValue"
+        />
+        <button matSuffix mat-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Chọn thời gian</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="rangePicker">
+          <input
+            matStartDate
+            formControlName="start"
+            placeholder="Start date"
+          />
+          <input matEndDate formControlName="end" placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="rangePicker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker>
+          <mat-date-range-picker-actions>
+            <button
+              mat-button
+              matDateRangePickerCance
+              (click)="onDateRangeReset()"
+            >
+              Đặt lại
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              matDateRangePickerApply
+              (click)="onDateRangeChanged()"
+            >
+              Apply
+            </button>
+          </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-select
+          disableRipple
+          [(value)]="selectedTab"
+          (selectionChange)="onTabChanged()"
+        >
+          <mat-option *ngFor="let tab of tabs" [value]="tab.id">{{
+            tab.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="payment-table border-t pt-15">
+    <ng-container *ngIf="transactions.length === 0">
+      <p class="mt-30 text-center">
+        Không có dữ liệu
+      </p>
+    </ng-container>
+    <ng-container *ngIf="transactions.length > 0">
+      <div *ngFor="let item of transactions">
+        <div class="w-full bg-white flex justify-start gap-10">
+          <div class="w-210 flex gap-10">
+            <div
+              class="w-10 h-10 rounded-full mt-5"
+              [class]="
+                item.transactionStatus === TransactionStatus.Success
+                  ? 'bg-green-600'
+                  : 'bg-red-500'
+              "
+            ></div>
+            <span>{{ item.transactionStatus }}</span>
+          </div>
+          <div
+            class="w-149 font-semibold"
+            [class]="
+              item.transactionStatus === TransactionStatus.Success
+                ? 'text-green-600'
+                : 'text-red-500'
+            "
+          >
+            {{ item.amount | currency: "VND":"symbol":"1.0-0" }}
+          </div>
+          <div class="w-250 line-clamp-2">
+            <p class="text-12">
+              {{ item.description }}
+            </p>
+          </div>
+          <div
+            *ngIf="selectedTab === TransactionType.Payment"
+            class="w-100 line-clamp-2"
+          >
+            <p class="text-12">
+              {{ item.postId }}
+            </p>
+          </div>
+          <div class="text-left">
+            <p>
+              <b>{{ item.codeType }}</b> <br>
+              <span>{{ item.userEmail }}</span>
+            </p>
+            <p class="text-11">
+              {{ item.code }}
+            </p>
+            <p class="text-11 text-gray-500">
+              {{ item.createdAt }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <mat-paginator
+    style-paginator
+    (page)="pageChangeEvent($event)"
+    [length]="totalPaymentTransactions"
+    [pageSize]="queryParams.pageSize"
+    [hidePageSize]="true"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</mat-card>
