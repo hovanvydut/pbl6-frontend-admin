@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+//
+import {
+  PaymentTransactionComponent,
+} from '@app/modules/payment/components';
 
 @Component({
   selector: 'app-manage-revenus',
@@ -6,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-revenus.component.scss']
 })
 export class ManageRevenusComponent implements OnInit {
+  @ViewChild('paymentTransactionTable') paymentTransactionComponent: PaymentTransactionComponent;
 
   constructor() { }
 

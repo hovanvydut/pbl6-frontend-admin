@@ -16,6 +16,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { RoleModule } from '../role/role.module';
 import { UserModule } from '../user/user.module';
 import { SettingModule } from '../setting/setting.module';
+import { PaymentModule } from '../payment/payment.module';
 
 export const routes: Routes = [
   {
@@ -84,6 +85,7 @@ const MODULES = [
   ProfileModule,
   UserModule,
   SettingModule,
+  PaymentModule,
 ];
 
 @NgModule({
