@@ -9,7 +9,7 @@ import {
   ApexStroke
 } from 'ng-apexcharts';
 
-export type ChartOptions = {
+type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;

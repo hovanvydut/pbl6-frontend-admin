@@ -35,8 +35,10 @@ export const routes: Routes = [
       },
       {
         path: 'statistics',
-        component: StatisticsComponent,
-        canActivate: [AuthGuard]
+        loadChildren: () =>
+          import('@app/modules/statistics/statistics.module').then(
+            m => m.StatisticsModule
+          )
       },
       {
         path: 'manage-user',
@@ -55,8 +57,10 @@ export const routes: Routes = [
       },
       {
         path: 'manage-revenus',
-        component: ManageRevenusComponent,
-        canActivate: [AuthGuard]
+        loadChildren: () =>
+          import('@app/modules/payment/payment.module').then(
+            m => m.PaymentModule
+          )
       },
       {
         path: 'settings',

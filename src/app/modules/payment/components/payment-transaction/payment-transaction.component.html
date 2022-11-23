@@ -66,12 +66,12 @@
     </div>
   </div>
   <div class="payment-table border-t pt-15">
-    <ng-container *ngIf="transactions.length === 0">
+    <ng-container *ngIf="transactions && transactions.length === 0">
       <p class="mt-30 text-center">
         Không có dữ liệu
       </p>
     </ng-container>
-    <ng-container *ngIf="transactions.length > 0">
+    <ng-container *ngIf="transactions && transactions.length > 0">
       <div *ngFor="let item of transactions">
         <div class="w-full bg-white flex justify-start gap-10">
           <div class="w-210 flex gap-10">
