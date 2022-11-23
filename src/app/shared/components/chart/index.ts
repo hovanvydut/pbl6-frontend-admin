@@ -1,2 +1,4 @@
-export { LineChartComponent } from './line-chart/line-chart.component';
-export { AreaChartComponent } from './area-chart/area-chart.component';
+export * from './pie-chart/pie-chart.component';
+export * from './line-chart/line-chart.component';
+export * from './area-chart/area-chart.component';
+export * from './bar-chart/bar-chart.component';
