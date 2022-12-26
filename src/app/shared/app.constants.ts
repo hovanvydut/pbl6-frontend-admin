@@ -1,3 +1,5 @@
+import { TabItemModel } from './models/base.model';
+
 export const ALLOWED_PAGE_SIZES = [
   25, 50, 100
 ];
@@ -31,3 +33,14 @@ export const DIALOG_BUTTON = {
   NO: 'No',
   SAVE: 'Save',
 }
+
+export const STATISTIC_TABS = [
+  new TabItemModel({
+    name: 'Bảng số liệu',
+    id: 'table'
+  }),
+  new TabItemModel({
+    name: 'Biểu đồ',
+    id: 'chart'
+  }),
+]

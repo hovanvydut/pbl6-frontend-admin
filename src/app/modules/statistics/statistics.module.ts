@@ -6,14 +6,12 @@ import { AuthGuard } from '@app/core/guards/auth.guard';
 import { SharedModule } from '@app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  StatisticDetailComponent,
   StatisticRevenueComponent,
 } from './components';
 
 const COMPONENTS = [
   StatisticsComponent,
   StatisticRevenueComponent,
-  StatisticDetailComponent
 ];
 
 export const routes: Routes = [

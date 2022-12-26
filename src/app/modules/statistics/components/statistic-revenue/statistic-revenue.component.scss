@@ -1,5 +1,9 @@
 .chart-container {
-  height: 80vh;
+  height: 83vh;
+
+  .table-container {
+    height: calc(100% - 40px);
+  }
 }
 
 ::ng-deep .table-wrapper {
@@ -58,7 +62,7 @@ table {
 }
 
 .statistic-detail-container {
-  height: 100%;
+  height: calc(100% - 70px);
   width: 100%;
 }
 
