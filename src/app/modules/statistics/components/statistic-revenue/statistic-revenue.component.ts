@@ -1,13 +1,12 @@
-import { ChartTypes, StatisticTypes } from '../../consts';
 import { finalize } from 'rxjs';
 import {
   ChangeDetectorRef,
   Component,
   Inject,
   OnInit,
-  ViewChild
 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { StatisticTypes, ChartTypes } from '../../consts';
 import { StatisticKey } from '../../enums';
 import {
   StatisticDetailParamsModel,
@@ -16,6 +15,7 @@ import {
 import { StatisticService } from '../../services';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { NotifyService } from '@app/shared/services/notify.service';
+import { STATISTIC_TABS } from '@app/shared/app.constants';
 
 @Component({
   selector: 'app-statistic-revenue',
@@ -23,6 +23,9 @@ import { NotifyService } from '@app/shared/services/notify.service';
   styleUrls: ['./statistic-revenue.component.scss']
 })
 export class StatisticRevenueComponent implements OnInit {
+  tabs = STATISTIC_TABS;
+  selectedTab = this.tabs[0];
+
   StatisticTypes = StatisticTypes;
   ChartTypes = ChartTypes;
   range = new FormGroup({
@@ -34,7 +37,7 @@ export class StatisticRevenueComponent implements OnInit {
   selectedType = StatisticTypes[0];
 
   statisticParams: StatisticParamsModel = new StatisticParamsModel({
-    key: StatisticKey.CreatePost,
+    key: StatisticKey.Revenue,
     fromDate: new Date(
       new Date().setDate(new Date().getDate() - 10)
     ).toISOString(),
@@ -42,10 +45,10 @@ export class StatisticRevenueComponent implements OnInit {
   });
   statisticDetailParams: StatisticDetailParamsModel = new StatisticDetailParamsModel(
     {
-      key: StatisticKey.CreatePost,
+      key: StatisticKey.Revenue,
       date: new Date().toISOString(),
       pageNumber: 1,
-      pageSize: 10,
+      pageSize: 20,
       searchValue: '',
       top: 5
     }
@@ -64,9 +67,10 @@ export class StatisticRevenueComponent implements OnInit {
   selectedChartName = ChartTypes[0].name;
 
   totalRecords: number;
-  displayedColumns: string[] = ['user', 'value'];
+  displayedColumns: string[] = ['email', 'value'];
 
   isLoading = false;
+  isLoadDetail = false;
   isViewDetail = false;
 
   constructor(
@@ -143,7 +147,6 @@ export class StatisticRevenueComponent implements OnInit {
         this.statisticData[dataPointIndex].statisticDate
       );
       this.isViewDetail = true;
-      this.cdr.detectChanges();
 
       this.getStatisticDetail();
       this.getStatisticTop();
@@ -151,8 +154,11 @@ export class StatisticRevenueComponent implements OnInit {
   }
 
   getStatisticDetail() {
+    this.isLoadDetail = true;
+
     this.statisticService
       .getStatisticDetail(this.statisticDetailParams)
+      .pipe(finalize(() => (this.isLoadDetail = false)))
       .subscribe(res => {
         this.statisticDetailData = res.records;
         this.totalRecords = res.totalRecords;
@@ -161,8 +167,11 @@ export class StatisticRevenueComponent implements OnInit {
   }
 
   getStatisticTop() {
+    this.isLoadDetail = true;
+
     this.statisticService
       .getStatisticTop(this.statisticDetailParams)
+      .pipe(finalize(() => (this.isLoadDetail = false)))
       .subscribe(res => {
         this.detailValue = res.map(item => {
           return parseInt(item.statisticValue);
@@ -178,6 +187,18 @@ export class StatisticRevenueComponent implements OnInit {
     this.statisticDetailParams.pageSize = event.pageSize;
     this.statisticDetailParams.pageNumber = event.pageIndex + 1;
     this.getStatisticDetail();
+  }
+
+  onTabClick(tab: any) {
+    this.selectedTab = tab;
+    switch (this.selectedTab.id) {
+      case 'chart':
+        this.getStatisticDetail();
+        break;
+      case 'table':
+        this.getStatisticTop();
+        break;
+    }
   }
 
   //#region HelperHelper
