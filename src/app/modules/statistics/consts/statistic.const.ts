@@ -11,4 +11,9 @@ export const StatisticTypes = [
         name: 'Số bài viết được đẩy ưu tiên',
         yaxis: 'Số bài viết',
     },
+    {
+        key: StatisticKey.Revenue,
+        name: 'Doanh thu',
+        yaxis: 'Doanh thu (VNĐ)',
+    },
 ]
