@@ -37,7 +37,7 @@
     <mat-form-field appearance="outline">
       <mat-select
         disableRipple
-        [(value)]="this.statisticParams.key"
+        [(value)]="statisticParams.key"
         (selectionChange)="onTabChanged()"
       >
         <mat-option *ngFor="let item of StatisticTypes" [value]="item.key">{{
@@ -45,6 +45,9 @@
         }}</mat-option>
       </mat-select>
     </mat-form-field>
+    <div class="shadow-md text-12 px-10 pt-12 mt-3 mb-20 rounded-6 border text-blue-700 border-gray-300 font-bold">
+      Tổng: {{ totalValue }}
+    </div>
   </div>
 </div>
 

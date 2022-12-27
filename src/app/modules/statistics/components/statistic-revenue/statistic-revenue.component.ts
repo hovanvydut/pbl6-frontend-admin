@@ -1,17 +1,9 @@
 import { finalize } from 'rxjs';
-import {
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { StatisticTypes, ChartTypes } from '../../consts';
 import { StatisticKey } from '../../enums';
-import {
-  StatisticDetailParamsModel,
-  StatisticParamsModel
-} from '../../models';
+import { StatisticDetailParamsModel, StatisticParamsModel } from '../../models';
 import { StatisticService } from '../../services';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { NotifyService } from '@app/shared/services/notify.service';
@@ -41,7 +33,7 @@ export class StatisticRevenueComponent implements OnInit {
     fromDate: new Date(
       new Date().setDate(new Date().getDate() - 10)
     ).toISOString(),
-    toDate: new Date().toISOString(),
+    toDate: new Date().toISOString()
   });
   statisticDetailParams: StatisticDetailParamsModel = new StatisticDetailParamsModel(
     {
@@ -68,6 +60,7 @@ export class StatisticRevenueComponent implements OnInit {
 
   totalRecords: number;
   displayedColumns: string[] = ['email', 'value'];
+  totalValue = 0;
 
   isLoading = false;
   isLoadDetail = false;
@@ -103,6 +96,11 @@ export class StatisticRevenueComponent implements OnInit {
         this.label = res.map(item => {
           return item.statisticDate;
         });
+      });
+    this.statisticService
+      .getTotalStatistic(this.statisticParams)
+      .subscribe(res => {
+        this.totalValue = res;
       });
   }
 
