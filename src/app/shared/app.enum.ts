@@ -70,3 +70,10 @@ export enum FieldType {
   Image = 'image',
   Toggle = 'toggle',
 }
+
+export enum Role {
+  Admin = 1,
+  Landlord,
+  Finder,
+  LandlordFinder
+}

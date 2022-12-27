@@ -1,3 +1,5 @@
+import { Role } from "@app/shared/app.enum";
+
 export class AuthModel {
   email: string;
   password: string;
@@ -29,6 +31,7 @@ export class AccountModel {
   email: string;
   id: string;
   displayName: string;
+  roleId: Role;
 
   public constructor(init?: Partial<AccountModel>) {
     Object.assign(this, init);

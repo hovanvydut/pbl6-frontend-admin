@@ -8,6 +8,7 @@ import { BaseService } from '@app/core/services/base.service';
 import { AuthService } from '../../services/auth.service';
 import { LoginModel } from '../../models/auth.model';
 import { NotifyService } from '@app/shared/services/notify.service';
+import { Role } from '@app/shared/app.enum';
 
 @Component({
   selector: 'app-login',
@@ -67,6 +68,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(data).subscribe(
       res => {
         if (res) {
+          if (res.roleId !== Role.Admin) {
+            this.errorMessage = 'Only admin can use this page';
+            this.notifyService.notify(this.errorMessage);
+            return;
+          }
           this.baseService.storeLoggedUser(res);
           this.baseService.storeToken(res.accessToken);
           this.router.navigateByUrl(this.returnUrl).then();
